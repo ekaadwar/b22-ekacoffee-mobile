@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Icons from "react-native-vector-icons/FontAwesome";
 
 export default class HomeScreen extends Component {
   render() {
@@ -8,7 +9,9 @@ export default class HomeScreen extends Component {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {[...Array(20)].map((_i, idx) => (
             <TouchableOpacity onPress={() => this.props.navigation.navigate("Detail")} key={String(idx)} style={styles.productCard}>
-              <View style={styles.image} />
+              <View style={styles.image}>
+                <Icons name="user-circle" color="yellow" size={30} />
+              </View>
               <Text style={styles.productName}>Hazelnut Latte</Text>
               <Text style={styles.productPrice}>IDR 30.000</Text>
             </TouchableOpacity>
@@ -39,6 +42,8 @@ const styles = StyleSheet.create({
     backgroundColor: "grey",
     borderRadius: 20,
     marginTop: -60,
+    justifyContent: "center",
+    alignItems: "center",
   },
   productName: {
     fontSize: 22,

@@ -8,20 +8,31 @@ import HomeScreen from "./src/screens/HomeScreen";
 import ProductDetail from "./src/screens/ProductDetail";
 import { Provider } from "react-redux";
 import store from "./src/redux/store";
+import { render } from "react-dom";
 
 const Stack = createNativeStackNavigator();
 
-function App() {
+const Header = ({ navigation }) => {
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} options={{ title: "Dashboard" }} />
-          <Stack.Screen name="Detail" component={ProductDetail} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
+    <View>
+      <Text>Hello</Text>
+    </View>
   );
+};
+
+class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen} options={{ title: "Dashboard" }} />
+            <Stack.Screen name="Detail" component={ProductDetail} options={{ header: Header }} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
+    );
+  }
 }
 
 export default App;
