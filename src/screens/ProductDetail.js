@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.parent}>
+      <ScrollView style={styles.parent}>
         <View style={styles.content}>
           <View style={styles.price}>
             <Text style={styles.priceText}>30.000</Text>
@@ -54,7 +54,7 @@ export default class App extends Component {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
