@@ -1,7 +1,7 @@
 // In App.js in a new project
 
 import * as React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -20,10 +20,10 @@ const Header = ({ navigation }) => {
   return (
     <View style={headerStyle.header}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Icon name="chevron-left" size={20} color="white" />
+        <Icon name="chevron-left" size={20} color="silver" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
-        <AntDesign name="shoppingcart" size={20} color="white" />
+        <AntDesign name="shoppingcart" size={20} color="silver" />
       </TouchableOpacity>
     </View>
   );
@@ -37,6 +37,8 @@ const headerStyle = StyleSheet.create({
     alignItems: "flex-end",
     backgroundColor: "#362115",
     paddingHorizontal: 40,
+    // position: "absolute",
+    // zIndex: 99,
   },
 });
 
@@ -46,8 +48,36 @@ class App extends React.Component {
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} options={{ title: "Dashboard" }} />
-            <Stack.Screen name="Detail" component={ProductDetail} options={{ header: Header }} />
+            <Stack.Screen
+              name="Detail"
+              component={ProductDetail}
+              options={{
+                header: Header,
+                cardStyle: {
+                  backgroundColor: "transparent",
+                },
+                // headerTintColor: "silver",
+                headerTransparent: true,
+                // presentation: "modal",
+                // headerRight: () => <Button onPress={() => alert("This is a button!")} title="Info" color="silver" />,
+                // headerLeft: () => <Button onPress={() => alert("This is a button!")} title="Info" color="silver" />,
+                // headerTitle: ()=>,
+                // headerShown: false,
+                // headerTitleStyle: {
+                //   fontWeight: "bold",
+                //   display: "none",
+                // },
+                headerShadowVisible: false,
+              }}
+            />
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              // options={{
+              //   title: "Dashboard",
+              //   cardShadowEnabled: false,
+              // }}
+            />
             <Stack.Screen name="Cart" component={Cart} />
           </Stack.Navigator>
         </NavigationContainer>
